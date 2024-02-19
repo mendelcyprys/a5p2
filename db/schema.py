@@ -8,7 +8,7 @@ def initialise(cur):
             age INTEGER NOT NULL,
             gender TEXT NOT NULL,
             contact_number TEXT NOT NULL
-        ) STRICT;
+        )
     """)
 
     # initialise table doctors
@@ -19,7 +19,7 @@ def initialise(cur):
             age INTEGER NOT NULL,
             gender TEXT NOT NULL,
             contact_number TEXT NOT NULL
-        ) STRICT;
+        )
     """)
 
     # initialise table appointments
@@ -32,5 +32,5 @@ def initialise(cur):
             end_time TEXT NOT NULL,
             doctor_id INTEGER NOT NULL,
             patient_id INTEGER NOT NULL
-        ) STRICT;
+        )
     """)

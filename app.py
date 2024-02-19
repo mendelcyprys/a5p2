@@ -1,6 +1,6 @@
 from flask import Flask, render_template, g
 import sqlite3
-from scripts.schema import initialise
+from db.schema import initialise
 
 app = Flask(__name__)
 
@@ -36,8 +36,10 @@ def home():
 
 @app.route("/doctors")
 def doctors():
-    cur = get_db().cursor()
-    return render_template('doctors.html', name='Doctors')
+    return render_template(
+        'doctors.html',
+        doctor_data=query_db('select * from doctors'),
+    )
 
 @app.route("/patients")
 def patients():

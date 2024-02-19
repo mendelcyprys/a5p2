@@ -1,6 +1,6 @@
 import sqlite3
 
-con = sqlite3.connect('db/database.sqlite3', autocommit=False)
+con = sqlite3.connect('db/database.sqlite3')
 cur = con.cursor()
 
 sample_doctor_data = [
@@ -8,62 +8,38 @@ sample_doctor_data = [
         "name": "Dr. Brian Hernandez",
         "age": 37,
         "gender": "Male",
-        "contact_number": "07645364253",
+        "contact_number": "07926678374",
     },
     {
         "name": "Dr. Samantha Kim",
         "age": 58,
         "gender": "Female",
-        "contact_number": "07645364253",
+        "contact_number": "07846378714",
     },
     {
         "name": "Dr. Jason Nguyen",
         "age": 45,
         "gender": "Male",
-        "contact_number": "07645364253",
+        "contact_number": "07748378924",
     },
     {
         "name": "Dr. Karen Thompson",
         "age": 61,
         "gender": "Female",
-        "contact_number": "0764536425",
+        "contact_number": "07453657628",
     },
     {
         "name": "Dr. Rachel Rodriguez",
         "age": 26,
         "gender": "Female",
-        "contact_number": "07645364253",
+        "contact_number": "07809128376",
     },
     {
         "name": "Dr. Christopher Brown",
         "age": 66,
         "gender": "Male",
-        "contact_number": "07645364253",
+        "contact_number": "07273879809",
     },
-    {
-        "name": "Dr. Jessica Davis",
-        "age": 47,
-        "gender": "Female",
-        "contact_number": "07645364253",
-    },
-    {
-        "name": "Dr. Kevin Lee",
-        "age": 33,
-        "gender": "Male",
-        "contact_number": "07645364253",
-    },
-    {
-        "name": "Dr. Jennifer Martinez",
-        "age": 63,
-        "gender": "Female",
-        "contact_number": "07645364253",
-    },
-    {
-        "name": "Dr. Michael Johnson",
-        "age": 29,
-        "gender": "Male",
-        "contact_number": "07645364253",
-    }
 ]
 
 
