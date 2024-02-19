@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}
+Patients
+{% endblock title %}
+
+{% block content %}
+<h2>Patients</h2>
+
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Patient name</th>
+            <th>Age</th>
+            <th>Gender</th>
+            <th>Contact number</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for patient in patient_data %}
+            <tr>
+                <td>
+                    {{ patient.name }}
+                </td>
+                <td>
+                    {{ patient.age }}
+                </td>
+                <td>
+                    {{ patient.gender }}
+                </td>
+                <td>
+                    {{ patient.contact_number }}
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+{% endblock content %}

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}
+Doctors
+{% endblock title %}
+
+{% block content %}
+<h2>Doctors</h2>
+
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Doctor name</th>
+            <th>Age</th>
+            <th>Gender</th>
+            <th>Contact number</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for doctor in doctor_data %}
+            <tr>
+                <td>
+                    {{ doctor.name }}
+                </td>
+                <td>
+                    {{ doctor.age }}
+                </td>
+                <td>
+                    {{ doctor.gender }}
+                </td>
+                <td>
+                    {{ doctor.contact_number }}
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+{% endblock content %}
