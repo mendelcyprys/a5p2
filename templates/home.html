@@ -4,8 +4,10 @@
 Home
 {% endblock title %}
 
-{% block content %}
+{% block data %}
+
 <h1 x-data="{ message: 'I ❤️ Alpine' }" x-text="message"></h1>
+
 <!-- have a button POST a click via AJAX -->
 <div style="height: 50px;">
     <button type="button"
@@ -16,4 +18,5 @@ Home
         Click Me
     </button>
 </div>
-{% endblock content %}
+
+{% endblock data %}

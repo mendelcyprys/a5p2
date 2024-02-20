@@ -4,16 +4,28 @@
 Patients
 {% endblock title %}
 
-{% block content %}
-<h2>Patients</h2>
+{% block topbar %}
+<div class="container-fluid" style="height: 100%;">
+    <div class="row align-items-center justify-content-start" style="height: 100%;">
+        <div class="col-auto">
+            <h2>Patients</h2>
+        </div>
+        <div class="col-auto">
+            <button type="button" class="btn btn-primary">New</button>
+        </div>
+    </div>
+</div>
+{% endblock topbar %}
 
-<table class="table table-striped table-hover">
+{% block data %}
+<table class="table table-striped table-hover" style="vertical-align: middle;">
     <thead>
         <tr>
-            <th>Patient name</th>
-            <th>Age</th>
-            <th>Gender</th>
+            <th style="width: 35%;">Patient name</th>
+            <th style="width: 10%;">Age</th>
+            <th style="width: 10%;">Gender</th>
             <th>Contact number</th>
+            <th style="width: 150px;"></th>
         </tr>
     </thead>
     <tbody>
@@ -31,10 +43,14 @@ Patients
                 <td>
                     {{ patient.contact_number }}
                 </td>
+                <td>
+                    <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-primary">Edit</button>
+                        <button type="button" class="btn btn-danger">Delete</button>
+                    </div>
+                </td>
             </tr>
         {% endfor %}
     </tbody>
 </table>
-
-
-{% endblock content %}
+{% endblock data %}
