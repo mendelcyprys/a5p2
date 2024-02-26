@@ -124,3 +124,28 @@ def submit_doctor_form():
         'components/doctors/data.html',
         doctor_data=query_db('select * from doctors'),
     )
+
+
+
+
+@app.post("/delete_doctor")
+def delete_doctor():
+    form_data = request.form.to_dict()
+    print(form_data)
+    
+    # add to database
+    cur = get_db().cursor()
+    print(form_data["doctor_id"])
+    cur.execute("""
+            DELETE FROM doctors
+            WHERE doctor_id = ?;
+        """,
+        (str(int(form_data["doctor_id"])), ),
+    )
+    # not sure if this is the best way to do this
+    getattr(g, '_database', None).commit()
+
+    return render_template(
+        'components/doctors/data.html',
+        doctor_data=query_db('select * from doctors'),
+    )
