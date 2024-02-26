@@ -1,4 +1,4 @@
-from flask import Flask, render_template, g
+from flask import Flask, render_template, g, request
 import sqlite3
 from db.schema import initialise
 
@@ -67,3 +67,60 @@ def appointments():
 @app.post("/clicked")
 def clicked():
     return "<span>I come from the server!</span>"
+
+
+
+
+@app.get("/new_doctor_form")
+def new_doctor_form():
+    return render_template(
+        'components/doctors/new.html',
+        form_data={
+            'name': '',
+            'age': '',
+            'gender': 'Choose',
+            'number': '',
+        }
+    )
+
+@app.post("/submit_doctor_form")
+def submit_doctor_form():
+    form_data = request.form.to_dict()
+    
+    # some data validation
+    if not form_data["age"].isdigit() or int(form_data["age"]) < 0:
+        return render_template(
+            'components/doctors/new.html',
+            form_data=form_data,
+            age_error=True,
+        )
+    if form_data["gender"] not in ["Male", "Female", "Other"]:
+        return render_template(
+            'components/doctors/new.html',
+            form_data=form_data,
+            gender_error=True,
+        )
+    
+    # add to database
+    cur = get_db().cursor()
+    cur.execute("""
+            INSERT INTO doctors (
+                name,
+                age,
+                gender,
+                contact_number
+            ) VALUES (?, ?, ?, ?);
+    """,
+    (
+        form_data["name"],
+        form_data["age"],
+        form_data["gender"],
+        form_data["number"],
+    ))
+    # not sure if this is the best way to do this
+    getattr(g, '_database', None).commit()
+
+    return render_template(
+        'components/doctors/data.html',
+        doctor_data=query_db('select * from doctors'),
+    )

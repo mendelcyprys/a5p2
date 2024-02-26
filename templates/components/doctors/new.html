@@ -1,0 +1,82 @@
+<form hx-post="/submit_doctor_form" hx-target="#data-area">
+  <div class="mb-3">
+    <!-- Name -->
+    <label for="doctor-name" class="form-label">Name</label>
+    <input
+      name="name"
+      type="text"
+      style="width: 50%"
+      class="form-control"
+      id="doctor-name"
+      aria-describedby="nameHelp"
+      value="{{ form_data.name }}"
+      required
+    />
+    <div id="nameHelp" class="form-text">
+      Please input the complete name with the lastname
+    </div>
+  </div>
+
+  <!-- Age -->
+  <div class="mb-3">
+    <label for="doctor-age" class="form-label">Age</label>
+    <input
+      name="age"
+      type="text"
+      style="width: 50%"
+      class="form-control"
+      id="doctor-age"
+      aria-describedby="ageHelp"
+      value="{{ form_data.age }}"
+      required
+    />
+    {% if age_error %}
+    <div id="ageHelp" class="form-text text-danger">
+      <b>Please input the age as a non-negative integer</b>
+    </div>
+    {% else %}
+    <div id="ageHelp" class="form-text">
+      Please input the age as a non-negative integer
+    </div>
+    {% endif %}
+  </div>
+
+  <!-- Gender -->
+  <div class="mb-3">
+    <label for="doctor-gender" class="form-label">Gender</label>
+    <select class="form-select" aria-label="gender select" name="gender" style="width: fit-content;" required>
+      <option value= "Choose" {% if form_data.gender == "Choose" %}selected{% endif %}>Open this select menu</option>
+      <option value="Male" {% if form_data.gender == "Male" %}selected{% endif %}>Male</option>
+      <option value="Female" {% if form_data.gender == "Female" %}selected{% endif %}>Female</option>
+      <option value="Other" {% if form_data.gender == "Other" %}selected{% endif %}>Other</option>
+    </select>
+    {% if gender_error %}
+    <div id="ageHelp" class="form-text text-danger">
+      <b>Please choose a gender</b>
+    </div>
+    {% else %}
+    <div id="ageHelp" class="form-text">
+      Please choose a gender
+    </div>
+    {% endif %}
+  </div>
+
+  <!-- Contact number -->
+  <div class="mb-3">
+    <label for="doctor-number" class="form-label">Contact number</label>
+    <input
+      name="number"
+      type="text"
+      style="width: 50%"
+      class="form-control"
+      id="doctor-number"
+      aria-describedby="numberHelp"
+      value="{{ form_data.number }}"
+      required
+    />
+    <div id="numberHelp" class="form-text">
+      Please input a valid phone number
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
